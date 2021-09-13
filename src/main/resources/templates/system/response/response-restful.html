@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('返回体列表')"/>
+</head>
+<body class="gray-bg">
+<div class="container-div">
+    <div class="row">
+        <form id="formId">
+            <!-- url id-->
+            <input type="hidden" name="urlId" th:value="${urlId}"/>
+        </form>
+        <div class="btn-group-sm" id="toolbar" role="group">
+            <a class="btn btn-primary single disabled" onclick="$.operate.edit()">
+                <i class="fa fa-edit"></i> 修改
+            </a>
+            <a class="btn btn-warning" onclick="$.table.exportExcel()">
+                <i class="fa fa-download"></i> 导出
+            </a>
+        </div>
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table"></table>
+        </div>
+    </div>
+</div>
+<th:block th:include="include :: footer"/>
+<script th:inline="javascript">
+
+
+    var prefix = ctx + "system/response/restful";
+    var responseType;
+    $(function () {
+        $.table.init(options);
+    });
+
+    var options = {
+        url: prefix + "/list",
+        uniqueId: "responseId",
+        detailUrl: prefix + "/{id}",
+        updateUrl: prefix + "/edit/{id}",
+        exportUrl: prefix + "/export",
+        createUrl: prefix + "/add",
+        modalName: "返回体",
+        columns: [{
+            checkbox: true
+        },
+            {
+                field: 'responseId',
+                title: '主键',
+                visible: false
+            },
+            {
+                field: 'dictValue',
+                title: `未配置<font color="#adadad">▇</font>丨已配置<font color="#1c84c6">▇</font>`,
+                formatter: function (value, row, index) {
+                    if (row.responseId) {
+                        return `<a class="btn btn-success btn-xs" href="javascript:void(0)"
+                                onclick="$.operate.edit('${row.responseId}')">${value}</a>`;
+                    }
+                    return `<a class="btn btn-default btn-xs" href="javascript:void(0)"
+                              onclick="changeType('${row.dictValue}');$.operate.add()">${value}</a>`;
+                }
+            },
+            {
+                field: 'description',
+                title: '简述'
+            },
+            {
+                field: 'statusCode',
+                title: 'HTTP状态码'
+            },
+
+            {
+                title: '操作',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    if (!row.responseId) {
+                        return '-';
+                    }
+                    return `<a class="btn btn-info btn-xs" href="javascript:void(0)" onclick="$.operate.detail('${row.responseId}')"><i class="fa fa-tasks"></i>详情</a> `;
+                }
+            }]
+    };
+
+    // 切换需要增加/修改的httpMethod
+    function changeType(code) {
+        responseType = code;
+    }
+
+</script>
+</body>
+</html>
