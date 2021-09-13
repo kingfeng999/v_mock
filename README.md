@@ -30,25 +30,13 @@ ps： 暂时不支持根据请求参数的逻辑切换返回格式，仅可以�
 如果只是使用，我们只需要JRE即可，无需任何其他软件。   
 不用clone源码！！！直接到[Releases](https://github.com/i-am-vt/v-mock/releases)页面（访问慢可以用[码云的](https://gitee.com/vtDev/v-mock/releases)），下载最新版本的jar包  
 
-只需一行命令即可使用  
-```
-java -jar v-mock.jar
-```   
-
 默认80端口 可以追加 --server.port=xxx 自己指定 
 
-🌟<s>**需要注意！** sqlite的数据库临时文件默认是放在java.io.tmpdir下，暂无其他变量控制，默认是系统的临时文件目录，   
-如果你的设备会有**清理临时文件**的操作，可以在-jar之前插入`-Djava.io.tmpdir=xxxxx`修改本项目的tmpdir路径，以免造成数据丢失。</s>
-新版默认修改了java.io.tmpdir路径为当前jar所在位置, 以防数据文件丢失。
 
-例如, 8098端口启动：  
 ```
-java -jar v-mock.jar --server.port=8089
-``` 
-
-推荐保存为sh或bat脚本，方便下次使用。
-
-
+java -jar v-mock.jar
+```
+即可使用  
 ## 如何使用
 
 安装完成后，根据自己的ip以及指定的端口，访问V-Mock后台界面。

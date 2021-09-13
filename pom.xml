@@ -24,12 +24,12 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <pagehelper.version>5.1.4</pagehelper.version>
-        <shiro.version>1.5.3</shiro.version>
+        <shiro.version>1.4.1</shiro.version>
         <druid.version>1.1.14</druid.version>
         <lombok.version>1.18.10</lombok.version>
         <poi.version>3.17</poi.version>
         <mybatis.plus.version>3.2.0</mybatis.plus.version>
-        <sqlite.jdbc.version>3.31.1</sqlite.jdbc.version>
+        <sqlite.jdbc.version>3.25.2</sqlite.jdbc.version>
         <hutool.version>5.0.6</hutool.version>
     </properties>
 

@@ -34,7 +34,7 @@ public class MockFilter implements Filter {
      * @param filterConfig 配置
      */
     @Override
-    public void init(FilterConfig filterConfig) {
+    public void init(FilterConfig filterConfig) throws ServletException {
         ServletContext servletContext = filterConfig.getServletContext();
         // init applicationContext
         applicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext);

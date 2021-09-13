@@ -2,14 +2,11 @@ package com.vmock;
 
 import com.vmock.base.constant.CommonConst;
 import com.vmock.base.filter.MockFilter;
-import com.vmock.base.utils.ApplicationUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.scheduling.annotation.EnableAsync;
 
-import static com.vmock.base.utils.ApplicationUtils.run;
 import static com.vmock.base.utils.DataMigrationUtils.dataMigrationCheck;
 
 /**
@@ -17,14 +14,15 @@ import static com.vmock.base.utils.DataMigrationUtils.dataMigrationCheck;
  *
  * @author mock
  */
-@EnableAsync
 @SpringBootApplication
 public class VMockApplication {
 
 
     public static void main(String[] args) {
+        // 是否需要数据迁移检测
+        dataMigrationCheck();
         // 启动主程序
-        run(VMockApplication.class, args);
+        SpringApplication.run(VMockApplication.class, args);
     }
 
     /**

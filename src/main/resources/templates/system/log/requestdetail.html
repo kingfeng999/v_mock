@@ -35,8 +35,7 @@
     <div class="form-group">
         <label class="col-sm-3 control-label">请求体(body)：</label>
         <div class="col-sm-9">
-            <pre class="form-control-static" th:if="${!#strings.isEmpty(requestDetail.get('body'))}"
-                 th:text="${requestDetail.get('body')}"></pre>
+            <pre class="form-control-static" th:if="${!#strings.isEmpty(requestDetail.get('body'))}" th:text="${requestDetail.get('body')}"></pre>
             <p class="form-control-static" th:if="${#strings.isEmpty(requestDetail.get('body'))}" th:text="无"></p>
         </div>
     </div>
@@ -71,8 +70,7 @@
         <div class="form-group">
             <label class="col-sm-3 control-label"></label>
             <div class="col-sm-9">
-                <p class="form-control-static" th:text="${item.key} + ':'"></p>
-                <pre th:text="${item.value}"></pre>
+                <p class="form-control-static" th:text="${item.key} + ' => ' + ${item.value}"></p>
             </div>
         </div>
     </th:block>

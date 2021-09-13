@@ -8,13 +8,10 @@
     <form class="form-horizontal m" id="form-response-add">
         <input name="urlId" type="hidden">
         <input name="customHeader" type="hidden">
-        <input name="httpMethodCode" type="hidden">
-
         <div class="form-group">
             <label class="col-sm-3 control-label">简述：</label>
             <div class="col-sm-8">
-                <input name="description" class="form-control" type="text" placeholder="例：xxx场景返回的json" maxlength="50"
-                       required>
+                <input name="description" class="form-control" type="text" placeholder="例：xxx场景返回的json" maxlength="50" required>
             </div>
         </div>
         <div class="form-group">
@@ -23,7 +20,7 @@
                 <input name="statusCode" class="form-control" type="number" placeholder="例：200" required max="999">
             </div>
         </div>
-        <div class="form-group" th:if="${responseType == 'MANUAL'}">
+        <div class="form-group">
             <label class="col-sm-3 control-label">请求方式：</label>
             <div class="col-sm-8">
                 <select name="method" class="form-control m-b" th:with="type=${@dict.getType('http_method')}">
@@ -59,7 +56,7 @@
     // SET URL ID
     var urlSelector = '[name="urlId"]';
     document.querySelector(urlSelector).value = parent.document.querySelector(urlSelector).value;
-    var prefix = parent.prefix;
+    var prefix = ctx + "system/response"
     $("#form-response-add").validate({
         focusCleanup: true
     });
@@ -70,12 +67,6 @@
             $.operate.save(prefix + "/add", $('#form-response-add').serialize());
         }
     }
-
-    // for restful model
-    if (parent.responseType) {
-        document.querySelector("[name='httpMethodCode']").value = parent.responseType;
-    }
-
 </script>
 </body>
 </html>

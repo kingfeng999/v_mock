@@ -55,7 +55,7 @@ public class DataBaseUtils {
         @Cleanup ResultSet resultSet = statement.executeQuery(sql);
         ResultSetMetaData md = resultSet.getMetaData();
         int columns = md.getColumnCount();
-        HashMap<String, Object> row = new HashMap(16);
+        HashMap<String, Object> row = new HashMap();
         // limit 1, no while
         if (resultSet.next()) {
             for (int i = 1; i <= columns; i++) {

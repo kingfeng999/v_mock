@@ -42,5 +42,10 @@ public class DictType extends BaseEntity {
     @Size(max = 100, message = "字典类型类型长度不能超过100个字符")
     private String dictType;
 
+    /**
+     * 状态（0正常 1停用）
+     */
+    @Excel(name = "状态", readConverterExp = "0=正常,1=停用")
+    private Integer status;
 
 }
